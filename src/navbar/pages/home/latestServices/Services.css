@@ -1,0 +1,37 @@
+/* Base service card */
+.service-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Create pseudo-elements for border effect */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+/* Directional borders on hover based on React state class */
+.service-card.left-top::before {
+  border-left-color: #FF014F;
+  border-top-color: #FF014F;
+}
+
+.service-card.left-bottom::before {
+  border-left-color: #FF014F;
+  border-bottom-color: #FF014F;
+}
+
+.service-card.right-top::before {
+  border-right-color: #FF014F;
+  border-top-color: #FF014F;
+}
+
+.service-card.right-bottom::before {
+  border-right-color: #FF014F;
+  border-bottom-color: #FF014F;
+}

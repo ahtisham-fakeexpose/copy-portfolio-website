@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   MdOutlineKeyboardArrowDown,
@@ -18,16 +18,27 @@ import Logo from "./pages/logo/Logo";
 export default function NavbarLink() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
   const [dropdowns, setDropdowns] = useState({
     services: false,
     blog: false,
     project: false,
   });
 
+  // Scroll Handler - Shadow after 10px
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Dropdown Handlers
-  const handleMouseEnter = (key) => setDropdowns({ ...dropdowns, [key]: true });
+  const handleMouseEnter = (key) => setDropdowns((prev) => ({ ...prev, [key]: true }));
   const handleMouseLeave = (key) =>
-    setDropdowns({ ...dropdowns, [key]: false });
+    setDropdowns((prev) => ({ ...prev, [key]: false }));
 
   const closeMenu = () => {
     setIsMobileMenuOpen(false);
@@ -35,8 +46,9 @@ export default function NavbarLink() {
   };
 
   return (
-    <div className="w-full bg-[#101010] sticky top-0 z-[100]  border-white/5">
-      <div className="max-w-[1440px] mx-auto flex items-center justify-between px-7 py-5 text-white">
+    <div className={`w-full bg-[#101010] sticky top-0 z-[100] border-white/5 transition-shadow duration-300 ${scrollPosition > 10 ? 'shadow-lg shadow-black/50' : ''
+      }`}>
+      <div className="max-w-[1440px] mx-auto flex items-center justify-between lg:px-7 lg:py-5 xl:px-[85px] text-white">
         {/* 1. Logo (Left Aligned) */}
         <div className="flex-shrink-0">
           <Link to="/">
@@ -45,8 +57,8 @@ export default function NavbarLink() {
         </div>
 
         {/* 2. Desktop Navigation (Centered Automatically) */}
-        <nav className="hidden md:flex flex-1 justify-center">
-          <ul className="flex items-center gap-x-6 lg:gap-x-10 text-[15px] font-bold tracking-wide">
+        <nav className="hidden md:flex flex-1 justify-center xl:mr-[38px]">
+          <ul className="flex items-center gap-x-6 lg:gap-x-8 text-[15px] font-bold tracking-wide">
             <li>
               <Link
                 to="/"
@@ -75,42 +87,112 @@ export default function NavbarLink() {
               >
                 Services
                 <MdOutlineKeyboardArrowDown
-                  className={`ml-1 text-xl transition-transform duration-300 ${dropdowns.services ? "rotate-180" : ""}`}
+                  className={`text-xl transition-transform duration-300 ${dropdowns.services ? "rotate-180" : ""}`}
                 />
               </div>
 
               {/* Dropdown Menu */}
-              {dropdowns.services && (
-                <ul className="absolute top-full left-0 w-52 bg-[#141414] rounded-xl shadow-2xl p-2 flex flex-col gap-1 border border-white/10 animate-in fade-in slide-in-from-top-2">
-                  <li>
-                    <Link
-                      to="/services"
-                      className="group/item flex justify-between items-center px-4 py-3 rounded-md hover:bg-[#270D15] hover:text-[#FF014F] transition duration-300 text-sm font-semibold"
-                    >
-                      Services{" "}
-                      <MdKeyboardArrowRight className="opacity-0 group-hover/item:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover/item:translate-x-0" />
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/service-details"
-                      className="group/item flex justify-between items-center px-4 py-3 rounded-md hover:bg-[#270D15] hover:text-[#FF014F] transition duration-300 text-sm font-semibold"
-                    >
-                      Service Details{" "}
-                      <MdKeyboardArrowRight className="opacity-0 group-hover/item:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover/item:translate-x-0" />
-                    </Link>
-                  </li>
-                </ul>
-              )}
+              <ul className={`absolute top-full left-0 w-52 bg-[#141414] rounded-xl shadow-2xl p-2 flex flex-col gap-1 transition-all duration-500 origin-top ${dropdowns.services
+                  ? "opacity-100 translate-y-0 visible"
+                  : "opacity-0 -translate-y-4 invisible"
+                }`}>
+                <li>
+                  <Link
+                    to="/services"
+                    className="group/item flex justify-between items-center px-4 py-3 rounded-md hover:bg-[#270D15] hover:text-[#FF014F] transition-all duration-300 text-sm font-semibold hover:scale-105 hover:translate-x-2"
+                  >
+                    Services{" "}
+                    <MdKeyboardArrowRight className="opacity-0 group-hover/item:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover/item:translate-x-0" />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/service-details"
+                    className="group/item flex justify-between items-center px-4 py-3 rounded-md hover:bg-[#270D15] hover:text-[#FF014F] transition-all duration-300 text-sm font-semibold hover:scale-105 hover:translate-x-2"
+                  >
+                    Service Details{" "}
+                    <MdKeyboardArrowRight className="opacity-0 group-hover/item:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover/item:translate-x-0" />
+                  </Link>
+                </li>
+              </ul>
             </li>
+            <li
+              className="relative group py-2"
+              onMouseEnter={() => handleMouseEnter("blog")}
+              onMouseLeave={() => handleMouseLeave("blog")}
+            >
+              <div
+                className={`flex items-center cursor-pointer transition duration-300 ${dropdowns.blog ? "text-[#FF014F]" : "hover:text-[#FF014F]"}`}
+              >
+                Blog
+                <MdOutlineKeyboardArrowDown
+                  className={`text-xl transition-transform duration-300 ${dropdowns.blog ? "rotate-180" : ""}`}
+                />
+              </div>
 
-            <li>
-              <Link
-                to="/project"
-                className="hover:text-[#FF014F] transition duration-300"
+              {/* Dropdown Menu */}
+              <ul className={`absolute top-full left-0 w-52 bg-[#141414] rounded-xl shadow-2xl p-2 flex flex-col gap-1 transition-all duration-500 origin-top ${dropdowns.blog
+                  ? "opacity-100 translate-y-0 visible"
+                  : "opacity-0 -translate-y-4 invisible"
+                }`}>
+                <li>
+                  <Link
+                    to="/blog"
+                    className="group/item flex justify-between items-center px-4 py-3 rounded-md hover:bg-[#270D15] hover:text-[#FF014F] transition-all duration-300 text-sm font-semibold hover:scale-105 hover:translate-x-2"
+                  >
+                    Blog Classic{" "}
+                    <MdKeyboardArrowRight className="opacity-0 group-hover/item:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover/item:translate-x-0" />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/blog-details"
+                    className="group/item flex justify-between items-center px-4 py-3 rounded-md hover:bg-[#270D15] hover:text-[#FF014F] transition-all duration-300 text-sm font-semibold hover:scale-105 hover:translate-x-2"
+                  >
+                    Blog Details{" "}
+                    <MdKeyboardArrowRight className="opacity-0 group-hover/item:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover/item:translate-x-0" />
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            <li
+              className="relative group py-2"
+              onMouseEnter={() => handleMouseEnter("project")}
+              onMouseLeave={() => handleMouseLeave("project")}
+            >
+              <div
+                className={`flex items-center cursor-pointer transition duration-300 ${dropdowns.project ? "text-[#FF014F]" : "hover:text-[#FF014F]"}`}
               >
                 Project
-              </Link>
+                <MdOutlineKeyboardArrowDown
+                  className={`text-xl transition-transform duration-300 ${dropdowns.project ? "rotate-180" : ""}`}
+                />
+              </div>
+
+              {/* Dropdown Menu */}
+              <ul className={`absolute top-full left-0 w-52 bg-[#141414] rounded-xl shadow-2xl p-2 flex flex-col gap-1 transition-all duration-500 origin-top ${dropdowns.project
+                  ? "opacity-100 translate-y-0 visible"
+                  : "opacity-0 -translate-y-4 invisible"
+                }`}>
+                <li>
+                  <Link
+                    to="/project"
+                    className="group/item flex justify-between items-center px-4 py-3 rounded-md hover:bg-[#270D15] hover:text-[#FF014F] transition-all duration-300 text-sm font-semibold hover:scale-105 hover:translate-x-2"
+                  >
+                    Projects{" "}
+                    <MdKeyboardArrowRight className="opacity-0 group-hover/item:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover/item:translate-x-0" />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/project-details"
+                    className="group/item flex justify-between items-center px-4 py-3 rounded-md hover:bg-[#270D15] hover:text-[#FF014F] transition-all duration-300 text-sm font-semibold hover:scale-105 hover:translate-x-2"
+                  >
+                    Project Details{" "}
+                    <MdKeyboardArrowRight className="opacity-0 group-hover/item:opacity-100 transition-all duration-300 translate-x-[-10px] group-hover/item:translate-x-0" />
+                  </Link>
+                </li>
+              </ul>
             </li>
             <li>
               <Link

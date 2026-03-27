@@ -1,0 +1,102 @@
+.counter-container {
+  display: inline-flex;
+  font-family: monospace;
+  font-size: inherit;
+  line-height: 1;
+  align-items: baseline;
+}
+
+.counter-digit-wrapper {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: bottom;
+  height: 1.2em;
+}
+
+.counter-digit-animation {
+  display: inline-block;
+  position: relative;
+  animation: slideUpFromBottom 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+}
+
+.digit-old {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  animation: fadeOut 0.2s ease forwards;
+}
+
+.digit-new {
+  display: inline-block;
+  position: relative;
+  animation: slideInFromBottom 0.25s ease-out forwards;
+}
+
+.digit-static {
+  display: inline-block;
+}
+
+/* Bottom to Top Animation Keyframes */
+@keyframes slideUpFromBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+/* Optional: Add a bounce effect at the end */
+@keyframes bounceUp {
+  0% {
+    transform: translateY(100%);
+  }
+  70% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Alternative smoother animation */
+.counter-digit-animation.smooth {
+  animation: smoothRise 0.3s cubic-bezier(0.34, 1.2, 0.64, 1) forwards;
+}
+
+@keyframes smoothRise {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
