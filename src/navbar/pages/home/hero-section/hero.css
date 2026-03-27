@@ -1,0 +1,49 @@
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 16px 32px;
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile:hover {
+    flex-direction: row-reverse;
+    gap: 0px;
+}
+
+.profile svg {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile:hover svg {
+    transform: translateX(-2px); 
+}
+
+.profile span {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+}
+
+.profile:hover span {
+    transform: translateX(2px);
+}
+@keyframes floatUpDown {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px); 
+    }
+}
+
+.animate-float {
+    animation: floatUpDown 2s ease-in-out infinite;
+}
