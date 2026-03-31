@@ -287,8 +287,8 @@
   border: 1px solid #222; /* Subtle outer border */
 }
  
-
-
+    
+  
 .input-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
