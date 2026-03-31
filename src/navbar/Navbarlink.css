@@ -1,5 +1,11 @@
+/* Ye change Navbar ki main CSS file mein karein */
 .navbar {
-  width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent; /* Background color hata dein */
+    z-index: 10; /* Sabse upar dikhne ke liye */
 }
 
 .navbar-container {

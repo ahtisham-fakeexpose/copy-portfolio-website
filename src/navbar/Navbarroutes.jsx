@@ -26,6 +26,7 @@ export default function Navbarroutes() {
                 { path: "blog/blogdetails", element: <BlogDetails /> },
                  { path: "project", element: <Project /> },
                 { path: "project/projectdetails", element: <Projectdetails /> },
+                { path: "project/projectdetails2", element: <Projectdetails /> },
                 { path: "contact", element: <Contact /> },
             ]
         }

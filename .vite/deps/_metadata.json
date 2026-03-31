@@ -1,103 +1,109 @@
 {
-  "hash": "cd428a04",
-  "configHash": "22b4aa3f",
-  "lockfileHash": "3189318c",
-  "browserHash": "78d44810",
+  "hash": "934d6146",
+  "configHash": "75a212f1",
+  "lockfileHash": "6c6a01c1",
+  "browserHash": "854c2bb0",
   "optimized": {
     "framer-motion": {
       "src": "../../node_modules/framer-motion/dist/es/index.mjs",
       "file": "framer-motion.js",
-      "fileHash": "9df67cce",
+      "fileHash": "bd0862e6",
       "needsInterop": false
     },
     "framer-motion/client": {
       "src": "../../node_modules/framer-motion/dist/es/client.mjs",
       "file": "framer-motion_client.js",
-      "fileHash": "06f6d454",
+      "fileHash": "bf809d91",
       "needsInterop": false
     },
     "lucide-react": {
       "src": "../../node_modules/lucide-react/dist/esm/lucide-react.js",
       "file": "lucide-react.js",
-      "fileHash": "7f61b4ef",
+      "fileHash": "b2b26dee",
       "needsInterop": false
     },
     "react-dom": {
       "src": "../../node_modules/react-dom/index.js",
       "file": "react-dom.js",
-      "fileHash": "de3d4b8e",
+      "fileHash": "817efac6",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "17b236d9",
+      "fileHash": "cb5952ff",
       "needsInterop": true
     },
     "react-icons/ci": {
       "src": "../../node_modules/react-icons/ci/index.mjs",
       "file": "react-icons_ci.js",
-      "fileHash": "b8b552f2",
+      "fileHash": "a1ea0d85",
       "needsInterop": false
     },
     "react-icons/fa": {
       "src": "../../node_modules/react-icons/fa/index.mjs",
       "file": "react-icons_fa.js",
-      "fileHash": "583c2553",
+      "fileHash": "0930eee8",
       "needsInterop": false
     },
     "react-icons/fa6": {
       "src": "../../node_modules/react-icons/fa6/index.mjs",
       "file": "react-icons_fa6.js",
-      "fileHash": "98498039",
+      "fileHash": "ae6f6145",
       "needsInterop": false
     },
     "react-icons/fi": {
       "src": "../../node_modules/react-icons/fi/index.mjs",
       "file": "react-icons_fi.js",
-      "fileHash": "a3f2118e",
+      "fileHash": "564f898e",
       "needsInterop": false
     },
-    "react-icons/io": {
-      "src": "../../node_modules/react-icons/io/index.mjs",
-      "file": "react-icons_io.js",
-      "fileHash": "99c158f3",
+    "react-icons/go": {
+      "src": "../../node_modules/react-icons/go/index.mjs",
+      "file": "react-icons_go.js",
+      "fileHash": "17af7b56",
       "needsInterop": false
     },
     "react-icons/lia": {
       "src": "../../node_modules/react-icons/lia/index.mjs",
       "file": "react-icons_lia.js",
-      "fileHash": "a30ef0c8",
+      "fileHash": "61551cbb",
       "needsInterop": false
     },
     "react-icons/md": {
       "src": "../../node_modules/react-icons/md/index.mjs",
       "file": "react-icons_md.js",
-      "fileHash": "f0a728b2",
+      "fileHash": "b353a43f",
+      "needsInterop": false
+    },
+    "react-icons/ti": {
+      "src": "../../node_modules/react-icons/ti/index.mjs",
+      "file": "react-icons_ti.js",
+      "fileHash": "5a0d28a6",
       "needsInterop": false
     },
     "react-router-dom": {
       "src": "../../node_modules/react-router-dom/dist/index.mjs",
       "file": "react-router-dom.js",
-      "fileHash": "542727ed",
+      "fileHash": "740226de",
       "needsInterop": false
     },
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "a83eac7a",
+      "fileHash": "b2dc8ce7",
       "needsInterop": true
     },
     "react/jsx-dev-runtime": {
       "src": "../../node_modules/react/jsx-dev-runtime.js",
       "file": "react_jsx-dev-runtime.js",
-      "fileHash": "214f527f",
+      "fileHash": "f1501cd6",
       "needsInterop": true
     },
     "react/jsx-runtime": {
       "src": "../../node_modules/react/jsx-runtime.js",
       "file": "react_jsx-runtime.js",
-      "fileHash": "8ac499b7",
+      "fileHash": "26e6c165",
       "needsInterop": true
     }
   },
